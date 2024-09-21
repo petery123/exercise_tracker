@@ -11,18 +11,21 @@ class SessionManager:
         try:
             return self._sessions.pop(session_index)
         except:
-            print("Removal Error!")
+            print("Removal Error!\n")
             return False
     
     def get_session(self, session_index):
         try:
             return self._sessions[session_index]
         except:
-            print("Access Error!")
+            print("Access Error!\n")
             return False
     
     def __str__(self) -> str:
         output = ""
         for i, session in enumerate(self._sessions, start=1):
-            output += f"{i}. {session}\n"
+            if (i == len(self._sessions)):
+                output += f"{i}. {session}"
+            else:
+                output += f"{i}. {session}\n"
         return output
