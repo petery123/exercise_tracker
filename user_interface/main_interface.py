@@ -23,19 +23,19 @@ class UserInterface:
             entry = input("Enter a command: ")
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
-            if(entry == "x"):
+            if(entry == "x"): #stops code run
                 break
 
-            elif(entry == "1"):
+            elif(entry == "1"): #to view all workout sessions
                 print("Your sessions:")
                 print(f"{self._sessions}\n")
 
-            elif(entry == "2"):
+            elif(entry == "2"): #to add a new session
                 session_name = input("Enter Session name: ")
                 self._sessions.add_session(Session(session_name))
                 print(f"{session_name} has been added to your sessions!\n")
             
-            elif(entry == "3"):
+            elif(entry == "3"): #to delete a session
                 print("Session List:")
                 print(self._sessions)       
                 session_index = int(input("Enter the number you want to delete: ")) - 1
@@ -43,7 +43,7 @@ class UserInterface:
                 if (removed_session):
                     print(f"{removed_session} has been removed from your sessions.\n")
             
-            elif(entry == "4"):
+            elif(entry == "4"): #view and open workout session
                 print("Here are your Sessions")
                 print(self._sessions)
 
@@ -55,6 +55,9 @@ class UserInterface:
 
                 if (session): #checking if a session has been properly accessed   
                     SessionInterface(session).start() #start up session interface
+            
+            else:
+                print("Command not valid!\n")
 
     def _create_demo_session(self):
         demo_session = Session("Demo Session")

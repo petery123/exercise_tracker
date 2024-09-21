@@ -16,6 +16,7 @@ class ExerciseInterface:
             print("x) Close\n")
 
             entry = input("Enter Command: ")
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
             if (entry == "x"): #stop exercise editor
                 break
@@ -27,9 +28,17 @@ class ExerciseInterface:
             
             elif(entry == "2"): #add new weight benchmark 
                 print(f"{self._exercise}\n")
-                new_weight = int(input("Enter new weight: "))
-                self._exercise.add_weight(new_weight)
-                print("New weight mark has been added")
+                while (True):
+                    try: #error handling to prevent crash if int not entered
+                        new_weight = int(input("Enter new weight: "))
+                        self._exercise.add_weight(new_weight)
+                        print("New weight mark has been added")
+                        break
+                    except:
+                        print("Weight must be an integer\n")
             
-            elif(entry == "3"):
+            elif(entry == "3"): #print weight progression
                 print(f"{self._exercise.progress()}\n")
+            
+            else:
+                print("Command not valid!\n")

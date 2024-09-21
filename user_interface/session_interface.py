@@ -18,22 +18,23 @@ class SessionInterface:
             print("x) Close\n")
 
             entry = input("Enter Command: ")
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
-            if (entry == "x"):
+            if (entry == "x"): #stop session editor
                 break
 
-            elif(entry == "1"):
+            elif(entry == "1"): #change exercise name
                 new_name = input("Enter New Name for Session: ")
                 self._session.set_name(new_name)
                 print("Name has been set")
             
-            elif(entry == "2"):
+            elif(entry == "2"): #add exercise
                 print(f"{self._session.__str__(True)}\n")
                 exercise_name = input("Enter name of exercise: ")
                 self._session.add_exercise(Exercise(exercise_name))
                 print("Exercise has been added")
             
-            elif(entry == "3"):
+            elif(entry == "3"): #delete exercise
                 if (not self._session.has_exercises()):
                     print("No exercises to delete")
                 else:
@@ -42,8 +43,10 @@ class SessionInterface:
                     removed_exercise = self._session.remove_exercise(exercise_index)
                     if (removed_exercise):
                         print(f"{removed_exercise} has been removed from this self._session.\n")
+                    else:
+                        print("Removal Error!\nGoing back!")
             
-            elif(entry == "4"):
+            elif(entry == "4"): #view / edit sepcific exercise
                 print("Here are your Exercises")
                 print(self._session.__str__(True))
 
@@ -55,3 +58,8 @@ class SessionInterface:
 
                 if (exercise): #checking if a session has been properly accessed   
                     ExerciseInterface(exercise).start() #start up exercise interface
+                else:
+                    print("Access Error!\nGoing back!")
+            
+            else:
+                print("Command not valid!\n")
