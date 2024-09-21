@@ -2,7 +2,7 @@ from .session import Session
 
 class SessionManager:
     def __init__(self) -> None:
-        self._sessions = [Session("Default Session")]
+        self._sessions = []
 
     def add_session(self, session: Session):
         self._sessions.append(session)
