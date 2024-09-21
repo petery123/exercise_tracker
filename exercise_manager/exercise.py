@@ -1,7 +1,7 @@
 class Exercise:
-    def __init__(self, name, weight) -> None:
+    def __init__(self, name):
         self.name = name
-        self.weights = [weight]
+        self.weights = []
     
     def change_name(self, new_name):
         self.name = new_name
@@ -10,11 +10,16 @@ class Exercise:
         self.weights.append(weight)
 
     def __str__(self):
-        return f"{self.name} : {self.weights[-1]}"
+        if len(self.weights) == 0:
+            return f"{self.name} : No Weights"
+        return f"{self.name}: {self.weights[-1]}"
     
     def progress(self):
-        weight_str = ""
-        for i in range(len(self.weights)):
+        weight_str = f"{self.name} progress: "
+        if (len(self.weights) == 0): #checks if there are any weights added
+            return f"{self.name} : No Added Weights!"
+        
+        for i in range(len(self.weights)): #loops through the weights and formats them in a printable way
             if (i != len(self.weights)-1):
                 weight_str += f"{self.weights[i]}, "
             else:
