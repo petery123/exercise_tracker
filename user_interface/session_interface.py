@@ -8,13 +8,14 @@ class SessionInterface:
     def start(self):
         print(f"{self._session.__str__(True)}\n")
         while (True):
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
             print("**SESSION VIEWER & EDITOR**")
             print(f"*CURRENT SESSION*: {self._session}")
             print("\nEditing Commands")
             print("1) Change Session Name")
             print("2) Add Exercise")
             print("3) Delete Exercise")
-            print("4) View / edit to specific Exercise")
+            print("4) View / edit specific Exercise")
             print("x) Close\n")
 
             entry = input("Enter Command: ")
@@ -44,11 +45,11 @@ class SessionInterface:
                     if (removed_exercise):
                         print(f"{removed_exercise} has been removed from this self._session.\n")
                     else:
-                        print("Removal Error!\nGoing back!")
+                        print("Removal Error!\nNot in range, going back!")
             
             elif(entry == "4"): #view / edit sepcific exercise
                 print("Here are your Exercises")
-                print(self._session.__str__(True))
+                print(f"{self._session.__str__(True)}\n")
 
                 exercise_index = input("Which Exercise will you like to view / edit: ")
                 print(" ")
@@ -59,7 +60,7 @@ class SessionInterface:
                 if (exercise): #checking if a session has been properly accessed   
                     ExerciseInterface(exercise).start() #start up exercise interface
                 else:
-                    print("Access Error!\nGoing back!")
+                    print("Access Error!\nNot in range, going back!")
             
             else:
                 print("Command not valid!\n")

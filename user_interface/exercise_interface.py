@@ -7,6 +7,7 @@ class ExerciseInterface:
     def start(self) -> None:
         print(f"CURRENT EXERCISE> {self._exercise}\n")
         while (True):
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
             print("**EXERCISE VIEWER & EDITOR**")
             print(f"*CURRENT EXERCISE*: {self._exercise}")
             print("\nEditing Commands")

@@ -13,6 +13,8 @@ class UserInterface:
         print("--WELCOME TO YOUR WORKOUT TRACKER--\n")
 
         while (True):
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+            print("**WORKOUT TRACKER HOME**")
             print("Program Commands")
             print("1) View Workout Sessions")
             print("2) Add Session")
@@ -42,6 +44,8 @@ class UserInterface:
                 removed_session = self._sessions.remove_session(session_index)
                 if (removed_session):
                     print(f"{removed_session} has been removed from your sessions.\n")
+                else:
+                    print("Removal Error!\nNot in range, going back!\n")
             
             elif(entry == "4"): #view and open workout session
                 print("Here are your Sessions")
@@ -55,6 +59,8 @@ class UserInterface:
 
                 if (session): #checking if a session has been properly accessed   
                     SessionInterface(session).start() #start up session interface
+                else:
+                    print("Access Error!\nNot in range, going back!\n")
             
             else:
                 print("Command not valid!\n")

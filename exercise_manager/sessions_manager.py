@@ -18,7 +18,6 @@ class SessionManager:
         try:
             return self._sessions[session_index]
         except:
-            print("Access Error!\n")
             return False
     
     def __str__(self) -> str:

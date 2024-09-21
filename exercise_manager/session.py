@@ -21,7 +21,7 @@ class Session:
         if(not extend):
            return self._name
         
-        workout_str = f"WORKOUT SESSION: {self._name}"
+        workout_str = f"WORKOUT SESSION: {self._name}\nEXERCISE LIST->"
 
         if(not self.has_exercises()):
             workout_str += "\nNo Workouts Added!"
