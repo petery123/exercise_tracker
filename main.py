@@ -1,3 +1,3 @@
-from userInterface import UserInterface
+from user_interface import UserInterface
 
 UserInterface().start()
