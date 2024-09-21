@@ -1,64 +1,57 @@
 from exercise_manager import Exercise
-from .workout_interface import WorkoutInterface
+from .exercise_interface import ExerciseInterface
 
 class SessionInterface:
-    def __init__(self, sessions):
-        self._sessions = sessions
+    def __init__(self, session):
+        self._session = session
 
     def start(self):
-        print("--WELCOME TO THE WORKOUT SESSION VIEWER AND EDITOR--")
-
-        while(True):
+        print(f"{self._session.__str__(True)}\n")
+        while (True):
             print("**SESSION VIEWER & EDITOR**")
-            print("Here are your Sessions")
-            print(self._sessions)
-            print("x: to exit")
+            print(f"*CURRENT SESSION*: {self._session}")
+            print("\nEditing Commands")
+            print("1) Change Session Name")
+            print("2) Add Exercise")
+            print("3) Delete Exercise")
+            print("4) View / edit to specific Exercise")
+            print("x) Close\n")
 
-            session_index = input("Which Session will you like to view / edit: ")
-            print(" ")
+            entry = input("Enter Command: ")
 
-            if (session_index == "x"):
+            if (entry == "x"):
                 break
 
-            session_index = int(session_index) - 1
-            session = self._sessions.get_session(session_index)
+            elif(entry == "1"):
+                new_name = input("Enter New Name for Session: ")
+                self._session.set_name(new_name)
+                print("Name has been set")
+            
+            elif(entry == "2"):
+                print(f"{self._session.__str__(True)}\n")
+                exercise_name = input("Enter name of exercise: ")
+                self._session.add_exercise(Exercise(exercise_name))
+                print("Exercise has been added")
+            
+            elif(entry == "3"):
+                if (not self._session.has_exercises()):
+                    print("No exercises to delete")
+                else:
+                    print(f"{self._session.__str__(True)}\n")
+                    exercise_index = int(input("Enter the number you want to delete: ")) - 1
+                    removed_exercise = self._session.remove_exercise(exercise_index)
+                    if (removed_exercise):
+                        print(f"{removed_exercise} has been removed from this self._session.\n")
+            
+            elif(entry == "4"):
+                print("Here are your Exercises")
+                print(self._session.__str__(True))
 
-            if (session): #checking if a session has been properly accessed       
-                print(session.__str__(True))
-                while (True):
-                    print(f"*CURRENT SESSION*: {session}")
-                    print("\nEditing Commands")
-                    print("1) Change Session Name")
-                    print("2) Add Exercise")
-                    print("3) Delete Exercise")
-                    print("4) View / edit to specific Exercise")
-                    print("x) Close\n")
+                exercise_index = input("Which Exercise will you like to view / edit: ")
+                print(" ")
 
-                    entry = input("Enter Command: ")
+                exercise_index = int(exercise_index) - 1
+                exercise = self._session.get_exercise(exercise_index)
 
-                    if (entry == "x"):
-                        break
-
-                    elif(entry == "1"):
-                        new_name = input("Enter New Name for Session: ")
-                        session.set_name(new_name)
-                        print("Name has been set")
-                    
-                    elif(entry == "2"):
-                        print(session.__str__(True))
-                        exercise_name = input("Enter name of exercise: ")
-                        session.add_exercise(Exercise(exercise_name))
-                        print("Exercise has been added")
-                    
-                    elif(entry == "3"):
-                        if (not session.has_exercises()):
-                            print("No exercises to delete")
-                        else:
-                            print(session.__str__(True))
-                            exercise_index = int(input("Enter the number you want to delete: ")) - 1
-                            removed_exercise = session.remove_exercise(exercise_index)
-                            if (removed_exercise):
-                                print(f"{removed_exercise} has been removed from this session.\n")
-                    
-                    elif(entry == "4"):
-                        WorkoutInterface().start()
+                if (exercise): #checking if a session has been properly accessed   
+                    ExerciseInterface(exercise).start() #start up exercise interface
