@@ -3,7 +3,7 @@ class Exercise:
         self.name = name
         self.weights = []
     
-    def change_name(self, new_name):
+    def set_name(self, new_name):
         self.name = new_name
     
     def add_weight(self, weight):
