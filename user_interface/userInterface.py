@@ -24,7 +24,8 @@ class UserInterface:
                 break
 
             elif(entry == "1"):
-                print(self._sessions)
+                print("Your sessions:")
+                print(f"{self._sessions}\n")
 
             elif(entry == "2"):
                 session_name = input("Enter Session name: ")
