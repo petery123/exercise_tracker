@@ -15,8 +15,7 @@ class Session:
         try:
             return self._exercises.pop(exercise_index)
         except:
-            print("Removal Error!\n")
-            return False
+            return False #returns false if can't access
     
     def __str__(self, extend=False) -> str:
         if(not extend):
@@ -37,5 +36,4 @@ class Session:
         try:
             return self._exercises[exercise_index]
         except:
-            print("Access Error!\n")
-            return False
+            return False #returns false if can't access
