@@ -14,8 +14,11 @@ class Session:
     def remove_exercise(self, exercise_index: int):
         return self._exercises.pop(exercise_index)
     
-    def __str__(self) -> str:
-        workout_str = f"WORKOUT SESSION: {self._name}\n"
+    def __str__(self, extend=False) -> str:
+        if(not extend):
+           return self._name
+        
+        workout_str = f"WORKOUT SESSION: {self._name}"
         for i in range(len(self._exercises)):
             workout_str += f"{i+1}. {(self._exercises[i])}\n"
         return  workout_str
