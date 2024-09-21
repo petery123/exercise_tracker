@@ -2,7 +2,7 @@
 class SessionInterface:
     def __init__(self, sessions):
         self._sessions = sessions
-        
+
     def start(self):
         print("--WELCOME TO THE WORKOUT SESSION VIEWER AND EDITOR--")
 
@@ -23,7 +23,13 @@ class SessionInterface:
                 while (True):
                     print("\nEditing Commands")
                     print("1) Change Session Name")
-                    print("1) Add Workout")
-                    print("2) Delete Workout")
-                    print("3) View / edit to specific Workout")
+                    print("2) Add Workout")
+                    print("3) Delete Workout")
+                    print("4) View / edit to specific Workout")
                     print("x) Close")
+
+                    entry = input("Enter Command: ")
+                    print()
+
+                    if (entry == "x"):
+                        break
