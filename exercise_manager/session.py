@@ -32,3 +32,10 @@ class Session:
     
     def has_exercises(self) -> bool:
         return (len(self._exercises) > 0)
+    
+    def get_exercise(self, exercise_index):
+        try:
+            return self._exercises[exercise_index]
+        except:
+            print("Access Error!\n")
+            return False
