@@ -14,7 +14,14 @@ class SessionManager:
             print("Removal Error!")
             return False
     
-    def __str__(self, extend=False) -> str:
+    def get_session(self, session_index):
+        try:
+            return self._sessions[session_index]
+        except:
+            print("Access Error!")
+            return False
+    
+    def __str__(self) -> str:
         output = ""
         for i, session in enumerate(self._sessions, start=1):
             output += f"{i}. {session}\n"
