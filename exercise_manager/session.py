@@ -20,5 +20,5 @@ class Session:
         
         workout_str = f"WORKOUT SESSION: {self._name}"
         for i in range(len(self._exercises)):
-            workout_str += f"{i+1}. {(self._exercises[i])}\n"
+            workout_str += f"\n{i+1}. {(self._exercises[i])}"
         return  workout_str
