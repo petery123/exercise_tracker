@@ -18,11 +18,6 @@ class Exercise:
         weight_str = f"{self.name} progress: "
         if (len(self.weights) == 0): #checks if there are any weights added
             return f"{self.name} : No Added Weights!"
-        
-        for i in range(len(self.weights)): #loops through the weights and formats them in a printable way
-            if (i != len(self.weights)-1):
-                weight_str += f"{self.weights[i]}, "
-            else:
-                weight_str += f"{self.weights[i]}"
+        weight_str += ", ".join(map(str, self.weights))
         
         return weight_str
