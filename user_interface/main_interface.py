@@ -1,15 +1,17 @@
+import json
+import os
 from exercise_manager import SessionManager
 from exercise_manager import Session
 from exercise_manager import Exercise
 from .session_interface import SessionInterface
 
 class UserInterface:
-    def __init__(self):
+    def __init__(self, filename="data.json"):
         self._sessions = SessionManager()
+        self._filename = filename
+        self.load_sessions() 
     
     def start(self):
-        self._sessions.add_session(self._create_demo_session())
-
         print("--WELCOME TO YOUR WORKOUT TRACKER--\n")
 
         while (True):
@@ -26,6 +28,8 @@ class UserInterface:
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
             if(entry == "x"): #stops code run
+                self.save_sessions()
+                print("Session saved")
                 break
 
             elif(entry == "1"): #to view all workout sessions
@@ -70,12 +74,34 @@ class UserInterface:
                 print("Command not valid!\n")
                 input()
 
-    def _create_demo_session(self):
-        demo_session = Session("Demo Session")
-        demo_exercise = Exercise("Demo Exercise")
-        demo_exercise.add_weight(40)
-        demo_exercise.add_weight(50)
-        demo_exercise.add_weight(80)
-        demo_session.add_exercise(demo_exercise)
-        return demo_session
+    def load_sessions(self):
+        #Load sessions from JSON file
+        if os.path.exists(self._filename):
+            with open(self._filename, 'r') as f:
+                session_data = json.load(f)
+                for session in session_data:
+                    new_session = Session(session['name'])
+                    for exercise in session['exercises']:
+                        new_exercise = Exercise(exercise['name'])
+                        new_exercise.set_weights(exercise['weights'])  # Restore weights
+                        new_session.add_exercise(new_exercise)
+                    self._sessions.add_session(new_session)
+        else:
+            print(f"{self._filename} not found, starting with empty sessions.")
+
+    def save_sessions(self):
+        """Save sessions to a JSON file."""
+        with open(self._filename, 'w') as f:
+            session_data = [
+                {
+                    'name': session.get_name(),
+                    'exercises': [
+                        {
+                            'name': exercise.get_name(),
+                            'weights': exercise.get_weights()
+                        } for exercise in session.get_exercises()
+                    ]
+                } for session in self._sessions.get_sessions()
+            ]
+            json.dump(session_data, f)
 
