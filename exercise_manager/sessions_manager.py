@@ -11,7 +11,6 @@ class SessionManager:
         try:
             return self._sessions.pop(session_index)
         except:
-            print("Removal Error!\n")
             return False
     
     def get_session(self, session_index):
@@ -19,6 +18,9 @@ class SessionManager:
             return self._sessions[session_index]
         except:
             return False
+    
+    def get_sessions(self):
+        return self._sessions
     
     def __str__(self) -> str:
         output = ""
