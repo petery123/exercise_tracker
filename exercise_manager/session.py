@@ -8,8 +8,14 @@ class Session:
     def set_name(self, new_name: str):
         self._name = new_name
     
+    def get_name(self):
+        return self._name
+    
     def add_exercise(self, exercise: Exercise):
         self._exercises.append(exercise)
+    
+    def get_exercises(self):
+        return self._exercises
     
     def remove_exercise(self, exercise_index: int):
         try:
