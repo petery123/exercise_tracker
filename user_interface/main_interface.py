@@ -6,7 +6,7 @@ from exercise_manager import Exercise
 from .session_interface import SessionInterface
 
 class UserInterface:
-    def __init__(self, filename="data.json"):
+    def __init__(self, filename='exercise_tracker/data.json'):
         self._sessions = SessionManager()
         self._filename = filename
         self.load_sessions() 
