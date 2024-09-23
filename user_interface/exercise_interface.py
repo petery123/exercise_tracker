@@ -26,6 +26,7 @@ class ExerciseInterface:
                 new_name = input("Enter New Name for Exercise: ")
                 self._exercise.set_name(new_name)
                 print("Name has been set")
+                input()
             
             elif(entry == "2"): #add new weight benchmark 
                 print(f"{self._exercise}\n")
@@ -37,9 +38,12 @@ class ExerciseInterface:
                         break
                     except:
                         print("Weight must be an integer\n")
+                    input()
             
             elif(entry == "3"): #print weight progression
                 print(f"{self._exercise.progress()}\n")
+                input()
             
             else:
                 print("Command not valid!\n")
+                input()

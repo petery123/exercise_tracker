@@ -28,12 +28,14 @@ class SessionInterface:
                 new_name = input("Enter New Name for Session: ")
                 self._session.set_name(new_name)
                 print("Name has been set")
+                input()
             
             elif(entry == "2"): #add exercise
                 print(f"{self._session.__str__(True)}\n")
                 exercise_name = input("Enter name of exercise: ")
                 self._session.add_exercise(Exercise(exercise_name))
                 print("Exercise has been added")
+                input()
             
             elif(entry == "3"): #delete exercise
                 if (not self._session.has_exercises()):
@@ -46,6 +48,7 @@ class SessionInterface:
                         print(f"{removed_exercise} has been removed from this self._session.\n")
                     else:
                         print("Removal Error!\nNot in range, going back!")
+                input()
             
             elif(entry == "4"): #view / edit sepcific exercise
                 print("Here are your Exercises")
@@ -61,6 +64,8 @@ class SessionInterface:
                     ExerciseInterface(exercise).start() #start up exercise interface
                 else:
                     print("Access Error!\nNot in range, going back!")
+                    input()
             
             else:
                 print("Command not valid!\n")
+                input()

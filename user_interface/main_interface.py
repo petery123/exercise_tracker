@@ -31,11 +31,13 @@ class UserInterface:
             elif(entry == "1"): #to view all workout sessions
                 print("Your sessions:")
                 print(f"{self._sessions}\n")
+                input()
 
             elif(entry == "2"): #to add a new session
                 session_name = input("Enter Session name: ")
                 self._sessions.add_session(Session(session_name))
                 print(f"{session_name} has been added to your sessions!\n")
+                input()
             
             elif(entry == "3"): #to delete a session
                 print("Session List:")
@@ -46,6 +48,7 @@ class UserInterface:
                     print(f"{removed_session} has been removed from your sessions.\n")
                 else:
                     print("Removal Error!\nNot in range, going back!\n")
+                input()
             
             elif(entry == "4"): #view and open workout session
                 print("Here are your Sessions")
@@ -61,9 +64,11 @@ class UserInterface:
                     SessionInterface(session).start() #start up session interface
                 else:
                     print("Access Error!\nNot in range, going back!\n")
+                    input()
             
             else:
                 print("Command not valid!\n")
+                input()
 
     def _create_demo_session(self):
         demo_session = Session("Demo Session")
